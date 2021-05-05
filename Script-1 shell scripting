@@ -1,0 +1,49 @@
+﻿root@ip-172-31-2-55:/home/ubuntu# cat auxproject.sh
+#!/bin/bash
+#automating the creation of new users on linux server
+
+GROUP_NAME=developers
+
+# variable for public key file
+AUTH=authorized_keys
+
+# setting name of ssh directory for skel
+SSH_SKE=/etc/skel/.ssh
+
+#check if group exists
+if [ $(getent group developers) ];
+        then
+                echo group already exists
+        else 
+                sudo groupadd $GROUP_NAME
+                echo group successfully created
+        fi
+
+#add ssh for folder to skel directory
+if [ -d *SSH_SKE* ];
+    then
+        echo "$SSH_SKE already exists"
+    else
+        sudo mkdir -p $SSH_SKE
+        sudo touch $SSH_SKE/$AUTH
+        sudo bash -c "cat $AUTH >> $SSH_SKE/authorized_keys"
+    fi 
+
+#create each user on the server
+for i in $( cat names.csv);
+    do 
+        #check if the username already exists
+        if [ $(getent passwd $i) ]
+        then
+            echo "$i already exists"
+        else 
+            sudo useradd -m -G $GROUP_NAME -s /bin/bash $i
+            sudo echo -e "password23\npassword23" | sudo passwd "$i"
+            sudo passwd -x 2 $i
+            echo "$i successfully created"
+            sudo chmod 700 /home/$i/.ssh
+            sudo chmod 644 /home/$i/.ssh/authorized_keys
+            echo "$i successfully created"
+        fi
+    done
+exit 0

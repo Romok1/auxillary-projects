@@ -1,0 +1,344 @@
+﻿root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# ls -l
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 18 May  5 00:26 names.csv
+root@ip-172-31-2-55:/home/ubuntu/Shell# vi authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxY"authorized_keys" [New] 1L, 553C written                                                                                     
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# ls -l
+total 8
+-rw-r--r-- 1 root   root   553 May  5 00:45 authorized_keys
+-rw-rw-r-- 1 ubuntu ubuntu  18 May  5 00:26 names.csv
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# vi onboarding_users
+E325: ATTENTION
+Found a swap file by the name ".onboarding_users.swp"
+          owned by: ubuntu   dated: Wed May 05 00:33:28 2021
+         file name: ~ubuntu/Shell/onboarding_users
+          modified: YES
+         user name: ubuntu   host name: ip-172-31-2-55
+        process ID: 22409 (STILL RUNNING)
+While opening file "onboarding_users"
+      CANNOT BE FOUND
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r onboarding_users"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".onboarding_users.swp"
+    to avoid this message.
+
+Swap file ".onboarding_users.swp" already exists!
+"onboarding_users" [New File]
+Using swap file ".onboarding_users.swp"
+Original file "/home/ubuntu/Shell/onboarding_users"
+Recovery completed. You should check if everything is OK.
+(You might want to write out this file under another name
+and run diff with the original file to check for changes)
+You may want to delete the .swp file now.
+
+
+#!/bin/bash
+#automating the creation of new users on linux server
+
+GROUP_NAME=developers
+
+# variable for public key file
+AUTH=authorized_keys
+
+#check if group exists
+        fi
+
+
+if [ $(getent group developers) ];
+                echo group already exists
+                echo group successfully created
+#create each user on the server
+    do
+        if [ $(getent passwd $i) ]
+            echo "$i already exists"
+            sudo useradd -m -G $GROUP_NAME -s /bin/bash $i
+            sudo echo -e "password123\npassword123" | sudo passwd "$i"
+            echo "$i successfully created"
+            sudo mkdir -p /home/$i/.ssh/
+            sudo touch /home/$i/.ssh/authorized_keys
+            sudo bash -c "cat $AUTH >> /home/$i/.ssh/authorized_keys"
+            sudo chmod 644 /home/$i/.ssh/authorized_keys
+            echo "$i home directory and ssh keys setup completed"
+    done
+"onboarding_users" [New] 37L, 1144C written                                                                                  
+root@ip-172-31-2-55:/home/ubuntu/Shell# cat names.csv 
+fumzy
+topsy
+rumzy
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# chmod +x onboarding_users
+root@ip-172-31-2-55:/home/ubuntu/Shell# ls -l
+total 12
+-rw-r--r-- 1 root   root    553 May  5 00:45 authorized_keys
+-rw-rw-r-- 1 ubuntu ubuntu   18 May  5 00:26 names.csv
+-rwxr-xr-x 1 root   root   1144 May  5 00:47 onboarding_users
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# ./onboarding_users
+groupadd: group 'contractors' already exists
+group successfully created
+New password: Retype new password: passwd: password updated successfully
+passwd: password expiry information changed.
+fumzy successfully created
+fumzy home directory and ssh keys setup completed
+New password: Retype new password: passwd: password updated successfully
+passwd: password expiry information changed.
+topsy successfully created
+topsy home directory and ssh keys setup completed
+New password: Retype new password: passwd: password updated successfully
+passwd: password expiry information changed.
+rumzy successfully created
+rumzy home directory and ssh keys setup completed
+root@ip-172-31-2-55:/home/ubuntu/Shell# vi names.csv 
+fumzy
+topsy
+rumzy
+~                                                                                                                                                        
+"names.csv" 3L, 19C written                                                                                                  
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# cat /etc/gro
+groff/  group   group-  
+root@ip-172-31-2-55:/home/ubuntu/Shell# cat /etc/gro
+groff/  group   group-  
+root@ip-172-31-2-55:/home/ubuntu/Shell# cat /etc/group
+root:x:0:
+daemon:x:1:
+bin:x:2:
+sys:x:3:
+adm:x:4:syslog,ubuntu
+tty:x:5:syslog
+disk:x:6:
+lp:x:7:
+mail:x:8:
+news:x:9:
+uucp:x:10:
+man:x:12:
+proxy:x:13:
+kmem:x:15:
+dialout:x:20:ubuntu
+fax:x:21:
+voice:x:22:
+cdrom:x:24:ubuntu
+floppy:x:25:ubuntu
+tape:x:26:
+sudo:x:27:ubuntu
+audio:x:29:ubuntu
+dip:x:30:ubuntu
+www-data:x:33:
+backup:x:34:
+operator:x:37:
+list:x:38:
+irc:x:39:
+src:x:40:
+gnats:x:41:
+shadow:x:42:
+utmp:x:43:
+video:x:44:ubuntu
+sasl:x:45:
+plugdev:x:46:ubuntu
+staff:x:50:
+games:x:60:
+users:x:100:
+nogroup:x:65534:
+systemd-journal:x:101:
+systemd-network:x:102:
+systemd-resolve:x:103:
+systemd-timesync:x:104:
+crontab:x:105:
+messagebus:x:106:
+input:x:107:
+kvm:x:108:
+render:x:109:
+syslog:x:110:
+tss:x:111:
+uuidd:x:112:
+tcpdump:x:113:
+ssh:x:114:
+landscape:x:115:
+admin:x:116:
+netdev:x:117:ubuntu
+lxd:x:118:ubuntu
+systemd-coredump:x:999:
+ubuntu:x:1000:
+pundix:x:1001:
+bosun:x:1006:
+titi:x:1007:
+shope:x:1008:
+ada:x:1009:
+mouse:x:1011:just,buns,chacha,polarized,chikali,polari,obiob
+just:x:1012:
+buns:x:1015:
+chacha:x:1016:
+polarized:x:1019:
+chikali:x:1020:
+polari:x:1021:
+intell:x:1022:
+coree:x:1023:
+contractors:x:1024:fumzy,topsy,rumzy
+obiob:x:1025:
+fumzy:x:1026:
+topsy:x:1027:
+rumzy:x:1028:
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# vi onboarding_users 
+E325: ATTENTION
+Found a swap file by the name ".onboarding_users.swp"
+          owned by: ubuntu   dated: Wed May 05 00:33:28 2021
+         file name: ~ubuntu/Shell/onboarding_users
+          modified: YES
+         user name: ubuntu   host name: ip-172-31-2-55
+        process ID: 22409 (STILL RUNNING)
+While opening file "onboarding_users"
+             dated: Wed May 05 00:47:08 2021
+      NEWER than swap file!
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r onboarding_users"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".onboarding_users.swp"
+    to avoid this message.
+
+Swap file ".onboarding_users.swp" already exists!
+#!/bin/bash
+#automating the creation of new users on linux server
+
+GROUP_NAME=contractors
+
+# variable for public key file
+AUTH=authorized_keys
+
+#check if group exists
+        fi
+#create each user on the server
+for i in $( cat names.csv);
+            sudo mkdir -p /home/$i/.ssh/
+            sudo touch /home/$i/.ssh/authorized_keys
+"onboarding_users" 37L, 1143C written                                                                                                  
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# ./onboarding_users 
+group successfully created
+New password: Retype new password: passwd: password updated successfully
+passwd: password expiry information changed.
+lappy successfully created
+lappy home directory and ssh keys setup completed
+New password: Retype new password: passwd: password updated successfully
+passwd: password expiry information changed.
+chucky successfully created
+chucky home directory and ssh keys setup completed
+New password: Retype new password: passwd: password updated successfully
+passwd: password expiry information changed.
+lucky successfully created
+lucky home directory and ssh keys setup completed
+root@ip-172-31-2-55:/home/ubuntu/Shell# 
+root@ip-172-31-2-55:/home/ubuntu/Shell# cd /home/lappy/
+root@ip-172-31-2-55:/home/lappy# ls -l
+total 0
+root@ip-172-31-2-55:/home/lappy# ls -la
+total 24
+drwxr-xr-x  3 lappy lappy 4096 May  5 00:52 .
+drwxr-xr-x 26 root  root  4096 May  5 00:52 ..
+-rw-r--r--  1 lappy lappy  220 Feb 25  2020 .bash_logout
+-rw-r--r--  1 lappy lappy 3771 Feb 25  2020 .bashrc
+-rw-r--r--  1 lappy lappy  807 Feb 25  2020 .profile
+drwx------  2 lappy lappy 4096 May  3 12:35 .ssh
+root@ip-172-31-2-55:/home/lappy# cd .ssh
+root@ip-172-31-2-55:/home/lappy/.ssh# ls -l
+total 4
+-rw-r--r-- 1 lappy lappy 1106 May  5 00:52 authorized_keys
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# cat authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxYMYR6jykIV4MPJTkCm+lGhTyMlRu+qRQjdLn8AAtHf4aEV8dIkoGh088DI7eA/4o0wz4OV4upH5ewSFS+5IHmRECEW5Nc=
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxYMYR6jykIV4MPJTkCm+lGhTyMlRu+qRQjdLn8AAtHf4aEV8dIkoGh088DI7eA/4o0wz4OV4upH5ewSFS+5IHmRECEW5Nc=
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# cd /etc/skel/
+root@ip-172-31-2-55:/etc/skel# ls -l
+total 0
+root@ip-172-31-2-55:/etc/skel# ls -la
+total 24
+drwxr-xr-x  3 root root 4096 May  3 12:35 .
+drwxr-xr-x 93 root root 4096 May  5 00:52 ..
+-rw-r--r--  1 root root  220 Feb 25  2020 .bash_logout
+-rw-r--r--  1 root root 3771 Feb 25  2020 .bashrc
+-rw-r--r--  1 root root  807 Feb 25  2020 .profile
+drwxr-xr-x  2 root root 4096 May  3 12:35 .ssh
+root@ip-172-31-2-55:/etc/skel# 
+root@ip-172-31-2-55:/etc/skel# rm .ssh
+rm: cannot remove '.ssh': Is a directory
+root@ip-172-31-2-55:/etc/skel# 
+root@ip-172-31-2-55:/etc/skel# rm -r .ssh
+root@ip-172-31-2-55:/etc/skel# 
+root@ip-172-31-2-55:/etc/skel# 
+root@ip-172-31-2-55:/etc/skel# cd /home/lappy/.ssh
+root@ip-172-31-2-55:/home/lappy/.ssh# ls -l
+total 4
+-rw-r--r-- 1 lappy lappy 1106 May  5 00:52 authorized_keys
+root@ip-172-31-2-55:/home/lappy/.ssh# cat authorized_keys 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxYMYR6jykIV4MPJTkCm+lGhTyMlRu+qRQjdLn8AAtHf4aEV8dIkoGh088DI7eA/4o0wz4OV4upH5ewSFS+5IHmRECEW5Nc=
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxYMYR6jykIV4MPJTkCm+lGhTyMlRu+qRQjdLn8AAtHf4aEV8dIkoGh088DI7eA/4o0wz4OV4upH5ewSFS+5IHmRECEW5Nc=
+root@ip-172-31-2-55:/home/lappy/.ssh# vi authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxYMYR6jykIV4MPJTkCm+lGhTyMlRu+qRQjdLn8AAtHf4aEV8dIkoGh088DI7eA/4o0wz4OV4upH5ewSFS+5IHmRECEW5Nc=
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCzKZyicHxIkklSrNlxsJyyTrcIdBIt84Z0cQb3R4k0jH53kxkaT5hP8tfWTe62LXi7vV86fY+SX7TBNM76XGCbw/6vrMGegm6J1x2i1AiLNwq5nqTjOGn0AIwku4IlCCLAB7tdfRyVuCarmBlwny3lzRyybIUAWXR/D6vpN09MsDILbKdhay+Q/p9OUBMSLPqXdY/QIh/Oe3rVv1lwY3AohNfq7V3tO88zKswfA5iiexNiSYX1myT0OrX8cBE771j9quoNZhQgaLI1mIMtAvnHQChrn9k2nUaO/BMBCQGol5XzGv1ado7hgoVPoluIUD+FGNo/pH4zcmDLICH6drXY/C9MESnkMUPLFxBXKO/OitApY71vRao9nAhAwpVMsy6FqiOb5uawhvhoHYIHTV/f4EtagVagRMP2PxYMYR6jykIV4MPJTkCm+lGhTyMlRu+qRQjdLn8AAtHf4aEV8dIkoGh088DI7eA/4o0wz4OV4upH5ewSFS+5IHmRECEW5Nc=
+"authorized_keys" 1L, 553C written                                                                                           
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# 
+root@ip-172-31-2-55:/home/lappy/.ssh# ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc fq_codel state UP group default qlen 1000
+    link/ether 0a:4a:45:09:75:61 brd ff:ff:ff:ff:ff:ff
+    inet 172.31.2.55/20 brd 172.31.15.255 scope global dynamic eth0
+       valid_lft 2113sec preferred_lft 2113sec
+    inet6 fe80::84a:45ff:fe09:7561/64 scope link 
+       valid_lft forever preferred_lft forever
+root@ip-172-31-2-55:/home/lappy/.ssh# cd ..
+root@ip-172-31-2-55:/home/lappy# touch diy
+root@ip-172-31-2-55:/home/lappy# 
+root@ip-172-31-2-55:/home/lappy# ls -l
+total 0
+-rw-r--r-- 1 root root 0 May  5 01:09 diy
+root@ip-172-31-2-55:/home/lappy# touch ner

@@ -1,0 +1,230 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Welcome to Ubuntu 20.04.2 LTS (GNULinux 5.4.0-1045-aws x86_64)
+
+  Documentation  httpshelp.ubuntu.com
+  Management     httpslandscape.canonical.com
+  Support        httpsubuntu.comadvantage
+
+  System information as of Wed May  5 005844 UTC 2021
+
+  System load  0.0               Processes             107
+  Usage of    30.6% of 7.69GB   Users logged in       1
+  Memory usage 55%               IPv4 address for eth0 172.31.0.149
+  Swap usage   0%
+
+  Pure upstream Kubernetes 1.21, smallest, simplest cluster ops!
+
+     httpsmicrok8s.io
+
+34 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run apt list --upgradable
+
+
+Last login Wed May  5 001257 2021 from 102.89.2.125
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ cd homeubuntu
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ ls -la
+total 32
+drwxr-xr-x 4 ubuntu ubuntu 4096 May  1 2026 .
+drwxr-xr-x 5 root   root   4096 May  4 1651 ..
+-rw------- 1 ubuntu ubuntu  171 May  4 1921 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Feb 25  2020 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 May  1 1726 .cache
+-rw-r--r-- 1 ubuntu ubuntu  807 Feb 25  2020 .profile
+drwx------ 2 ubuntu ubuntu 4096 May  1 1700 .ssh
+-rw-r--r-- 1 ubuntu ubuntu    0 May  1 1727 .sudo_as_admin_successful
+ubuntu@ip-172-31-0-149~$ 
+ubuntu@ip-172-31-0-149~$ sudo su
+root@ip-172-31-0-149homeubuntu# useradd -m topey
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# sudo visudo
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# passwd topey
+New password 
+Retype new password 
+passwd password updated successfully
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# su topey
+$ 
+$ 
+$ 
+$ 
+$ 
+$ 
+$ pwd
+homeubuntu
+$ 
+$ cd hometopey
+$ 
+$ 
+$ 
+$ ls -la
+total 20
+drwxr-xr-x 2 topey topey 4096 May  5 0100 .
+drwxr-xr-x 6 root  root  4096 May  5 0100 ..
+-rw-r--r-- 1 topey topey  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 topey topey 3771 Feb 25  2020 .bashrc
+-rw-r--r-- 1 topey topey  807 Feb 25  2020 .profile
+$ 
+$ 
+$ 
+$ ssh-keygen^C
+$ exit
+root@ip-172-31-0-149homeubuntu# 
+root@ip-172-31-0-149homeubuntu# exit
+exit
+ubuntu@ip-172-31-0-149~$ su topey
+Password 
+$ 
+$ 
+$ 
+$ pwd
+homeubuntu
+$ 
+$ 
+$ cd hometopey
+$ r^Hssh^H
+sh 8 ss not found
+$ ssh-keygen -t rsa
+Generating publicprivate rsa key pair.
+Enter file in which to save the key (hometopey.sshid_rsa) 
+Created directory 'hometopey.ssh'.
+Enter passphrase (empty for no passphrase) 
+Enter same passphrase again 
+Your identification has been saved in hometopey.sshid_rsa
+Your public key has been saved in hometopey.sshid_rsa.pub
+The key fingerprint is
+SHA256gVMHan8wPPgZpQWDtDXKmoS4B9FwQS4RsZO3Gtd5d4Y topey@ip-172-31-0-149
+The key's randomart image is
++---[RSA 3072]----+
++. ...Bo+      
+ O.. ..X B       
+B + . X O        
+  + = + O       
+o + = . E +      
+ =   . . +       
+.                
+                 
+                 
++----[SHA256]-----+
+$ 
+$ ls -l
+total 0
+$ ls -la
+total 24
+drwxr-xr-x 3 topey topey 4096 May  5 0105 .
+drwxr-xr-x 6 root  root  4096 May  5 0100 ..
+-rw-r--r-- 1 topey topey  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 topey topey 3771 Feb 25  2020 .bashrc
+-rw-r--r-- 1 topey topey  807 Feb 25  2020 .profile
+drwx------ 2 topey topey 4096 May  5 0105 .ssh
+$ 
+$ cd .ssh
+$ ls
+id_rsa  id_rsa.pub
+$ vi id_rsa.pub
+$ 
+$ 
+$ vi id_rsa
+$ 
+$ 
+$ 
+$ 
+$ ls -l
+total 8
+-rw------- 1 topey topey 2590 May  5 0107 id_rsa
+-rw-r--r-- 1 topey topey  553 May  5 0106 id_rsa.pub
+$ 
+$ 
+$ 
+$ ping 34.216.19.37
+PING 34.216.19.37 (34.216.19.37) 56(84) bytes of data.
+64 bytes from 34.216.19.37 icmp_seq=1 ttl=63 time=0.642 ms
+64 bytes from 34.216.19.37 icmp_seq=2 ttl=63 time=0.515 ms
+64 bytes from 34.216.19.37 icmp_seq=3 ttl=63 time=0.528 ms
+^C
+--- 34.216.19.37 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2030ms
+rtt minavgmaxmdev = 0.5150.5610.6420.057 ms
+$ ssh lappy@34.216.19.37
+The authenticity of host '34.216.19.37 (34.216.19.37)' can't be established.
+ECDSA key fingerprint is SHA256jrZJWIwMygEna9p8DsRxg4ttcFOAgyhR00oTYZs1L0.
+Are you sure you want to continue connecting (yesno[fingerprint]) yes
+Warning Permanently added '34.216.19.37' (ECDSA) to the list of known hosts.
+Warning your password will expire in 2 days
+Welcome to Ubuntu 20.04.2 LTS (GNULinux 5.4.0-1045-aws x86_64)
+
+  Documentation  httpshelp.ubuntu.com
+  Management     httpslandscape.canonical.com
+  Support        httpsubuntu.comadvantage
+
+  System information as of Wed May  5 010900 UTC 2021
+
+  System load  0.0               Processes             117
+  Usage of    28.0% of 7.69GB   Users logged in       1
+  Memory usage 30%               IPv4 address for eth0 172.31.2.55
+  Swap usage   0%
+
+  Pure upstream Kubernetes 1.21, smallest, simplest cluster ops!
+
+     httpsmicrok8s.io
+
+34 updates can be installed immediately.
+0 of these updates are security updates.
+To see these additional updates run apt list --upgradable
+
+
+ System restart required 
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in usrsharedoccopyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+lappy@ip-172-31-2-55~$ ls 
+diy
+lappy@ip-172-31-2-55~$ 
+lappy@ip-172-31-2-55~$ 
+lappy@ip-172-31-2-55~$ 
+lappy@ip-172-31-2-55~$ 
+lappy@ip-172-31-2-55~$ ls -l
+total 0
+-rw-r--r-- 1 root root 0 May  5 0109 diy
+-rw-r--r-- 1 root root 0 May  5 0110 ner
+lappy@ip-172-31-2-55~$ 
+lappy@ip-172-31-2-55~$ 
+lappy@ip-172-31-2-55~$ exit
+logout
+Connection to 34.216.19.37 closed.
+$ 
